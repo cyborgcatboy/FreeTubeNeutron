@@ -15,7 +15,14 @@ wget "https://github.com/MarmadileManteater/FreeTubeCordova/releases/download/${
 rm -r freetube-pwa
 unzip freetube-pwa.zip -d freetube-pwa
 
-git clone https://github.com/gamingdoom/neutron --recurse-submodules -j8
+# if the neutron dir already exists, just git pull inside it, otherwise clone
+if [[ -e neutron ]]; then
+  cd neutron
+  git pull
+  cd ..
+else
+  git clone https://github.com/gamingdoom/neutron --recurse-submodules -j8
+fi
 
 cp config.json neutron/config.json
 
@@ -23,9 +30,11 @@ cd neutron/
 python -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
-#python configurator.py -c config.json 
+if ! [[ -e build/config.json ]]; then 
+  python configurator.py -c config.json 
+fi
 cd build
-#python build.py
+python build.py
 
 cd ${SDIR}/freetube-pwa
 if command -v caddy &> /dev/null; then
@@ -33,7 +42,7 @@ if command -v caddy &> /dev/null; then
   echo "caddy found! using..."
   caddy file-server -r . -l :21999
 else
-  echo "no caddy!"
+  echo "no caddy! downloading binary..."
   wget "https://github.com/caddyserver/caddy/releases/download/v${CDYVER}/caddy_${CDYVER}_${CDYARC}.tar.gz" -O caddy.tar.gz;
   tar -zxf caddy.tar.gz caddy; 
   ./caddy file-server -r . -l :21999  
