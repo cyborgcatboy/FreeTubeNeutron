@@ -1,0 +1,25 @@
+{
+    "appName": "FreeTubeNeutron",
+    "internalAppName": "freetubeneutron",
+    "url": "http://localhost:21999/",
+    "logoSvgFilePath": "../../logo.svg",
+    "platforms": [
+        "linux",
+        "appimage",
+	      "linux-aarch64",
+	      "appimage-aarch64",
+        "windows",
+    	  "mac-arm",
+	      "mac-intel"
+    ],
+    "extensionURLs": [
+        "NEUTRON_OPEN_IN_DEFAULT_BROWSER_EXTENSION_LOCATION"
+    ],
+    "version": "0.1.0",
+    "projectURL": "https://github.com/cyborgcatboy/freetubeneutron",
+    "projectHelpURL": "https://github.com/cyborgcatboy/freetubeneutron/issues",
+    "openInDefaultBrowser": true,
+    "openInDefaultBrowserRegex": "http[s]?://localhost:21999",
+    "runInBackground": false,
+    "extensionURLs": ""
+}
