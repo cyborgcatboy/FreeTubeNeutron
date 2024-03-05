@@ -12,12 +12,14 @@ wget https://github.com/MarmadileManteater/FreeTubeCordova/releases/download/${F
 unzip freetube-${FTCVER}-pwa -o -d freetube-pwa
 
 git clone https://github.com/gamingdoom/neutron --recurse-submodules -j8
-cp config.json neutron/build/config.json
+
+cp config.json neutron/config.json
+
 cd neutron/
 python -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
-python configurator.py -c build/config.json 
+python configurator.py -c config.json 
 cd build
 python build.py
 
