@@ -24,7 +24,7 @@ else
   git clone https://github.com/gamingdoom/neutron --recurse-submodules -j8
 fi
 
-cp config.json neutron/config.json
+cp src/config.json neutron/config.json
 
 cd neutron/
 python -m venv venv

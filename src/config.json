@@ -2,7 +2,7 @@
     "appName": "FreeTubeNeutron",
     "internalAppName": "freetubeneutron",
     "url": "http://localhost:21999/",
-    "logoSvgFilePath": "../../logo.svg",
+    "logoSvgFilePath": "../../src/logo.svg",
     "platforms": [
         "linux",
         "appimage",
